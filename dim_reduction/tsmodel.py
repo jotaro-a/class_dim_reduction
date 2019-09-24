@@ -1,5 +1,4 @@
-"""Summary
-"""
+import pandas as pd
 from sklearn import preprocessing
 from sklearn.manifold import MDS
 from sklearn.manifold import TSNE
@@ -23,7 +22,7 @@ class TSMODEL:
             data_frame (TYPE): Description
         """
         self.X = data_frame[data_frame.columns[1:8]]
-        self.X_scaled = preprocessing.scale(X)
+        self.X_scaled = preprocessing.scale(self.X)
 
     def fit_model_MDS(self, n_components):
         """Summary
@@ -31,8 +30,8 @@ class TSMODEL:
         Args:
             n_components (TYPE): Description
         """
-        embedding = MDS(n_components=2)
-        X_MDS = embedding.fit_transform(X_scaled)
+        embedding = MDS(n_components=n_components)
+        X_MDS = embedding.fit_transform(self.X_scaled)
 
         self.proj_data_MDS = pd.DataFrame(X_MDS)
 
@@ -42,7 +41,5 @@ class TSMODEL:
         Args:
             **kwargs: Description
         """
-        kwargs={"perplexity":21}
-        X_proj_TSNE = TSNE(**kwargs).fit_transform(X_scaled)
-
+        X_proj_TSNE = TSNE(**kwargs).fit_transform(self.X_scaled)
         self.proj_data_TSNE = pd.DataFrame(X_proj_TSNE)
