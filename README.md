@@ -107,5 +107,7 @@ Other configs like `name`, `version`, `description` and `author` information can
 For more details, 
 - Classes: https://www.programiz.com/python-programming/object-oriented-programming
 - Packaging: https://packaging.python.org/tutorials/packaging-projects/
+more packing
+* https://www.freecodecamp.org/news/how-to-use-github-as-a-pypi-server-1c3b0d07db2/
 
 
